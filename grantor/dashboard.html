@@ -3,60 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impact Dashboard Panel | BursaryFund</title>
+    <title>Donor Dashboard | BursaryHub</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
     <nav class="navbar">
         <div class="nav-container container">
-            <a href="../home.html" class="brand">BursaryFund<span>Hub</span></a>
-            <a href="../home.html" style="text-decoration:none; font-weight:700; color:#64748b; font-size:0.9rem;">Disconnect Session</a>
+            <a href="../home.html" class="brand">BURSARY<span>HUB</span></a>
+            <a href="../home.html" style="text-decoration:none; font-weight:700; color:#64748b; font-size:0.9rem;">Logout</a>
         </div>
     </nav>
 
     <div class="container">
-        <header style="margin-top: 1rem;">
-            <h2 style="color: var(--ifc-blue); font-weight: 800;">Funder Impact Dashboard</h2>
-            <p style="color: #64748b;">Real-time management configuration for public funding pools[cite: 18].</p>
+        <header style="margin-top: 1rem; margin-bottom: 2rem;">
+            <h2 style="color: var(--ifc-blue); font-weight: 800;">Donor Dashboard</h2>
         </header>
 
-        <div class="layout-deck">
-            <div style="display:flex; flex-direction:column; gap:1.5rem;">
-                <div class="glass-panel metric-block">
-                    <p>Audited Escrow Capital Balance [cite: 44]</p>
-                    <h2>5,000,000 KES</h2>
-                    <div style="font-size:0.8rem; background:rgba(255,255,255,0.15); padding:0.5rem; border-radius:4px;">
-                        ✓ Active Real-Time Liquidity Reporting Verified [cite: 17, 71]
-                    </div>
-                </div>
-
-                <div class="glass-panel" style="padding:2rem;">
-                    <h3 style="color:var(--ifc-blue); font-size:1.1rem; margin-bottom:1.25rem; font-weight:800; text-transform:uppercase;">Deploy Funding Pool [cite: 18, 54]</h3>
-                    <form id="poolDeploymentForm">
-                        <div class="form-group">
-                            <label for="poolBudget">Target Pool Budget Allocation (KES) [cite: 55]</label>
-                            <input type="number" id="poolBudget" class="form-input" min="1000" placeholder="e.g., 5000000" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width:100%; font-size:0.85rem;">Initialize Vault Pool [cite: 54]</button>
-                    </form>
-                    <div id="poolFeedback" class="feedback-msg"></div>
-                </div>
+        <!-- Section 1: Summary Statistics Cards -->
+        <div class="stat-cards-deck">
+            <div class="stat-card">
+                <h3>💰 Total Donated</h3>
+                <p>$247,500</p>
             </div>
-
-            <div class="glass-panel" style="padding: 2.5rem;">
-                <h3 style="color: var(--ifc-blue); margin-bottom: 1.5rem; font-weight: 800;">Ingest Cryptographic Beneficiary Roster</h3>
-                <p style="font-size: 0.95rem; color:#475569; margin-bottom:1.5rem;">Upload internal student lists via standard comma-separated metrics. The engine maps IDs directly into sub-allocation escrow code tables[cite: 58, 59].</p>
-                
-                <div id="uploadDropzone" class="upload-dropzone">
-                    <span style="font-size:3rem;">💾</span>
-                    <h4>Upload Student Roster (CSV) [cite: 58]</h4>
-                    <p>Drag spreadsheet files directly into this zone, or click to explore internal file structures.</p>
-                    <input type="file" id="csvFileInput" accept=".csv">
-                </div>
-                <div id="rosterFeedback" class="feedback-msg"></div>
+            <div class="stat-card">
+                <h3>🎓 Active Scholarships</h3>
+                <p>3</p>
+            </div>
+            <div class="stat-card">
+                <h3>👨‍🎓 Students Funded</h3>
+                <p>142</p>
+            </div>
+            <div class="stat-card">
+                <h3>🇰🇪 Total Disbursed</h3>
+                <p>2,850,000 KSH</p>
             </div>
         </div>
+
+        <!-- Section 2: Create New Scholarship Form -->
+        <div class="glass-panel">
+            <h3 class="panel-header">Create New Scholarship <button class="action-button">[EXPAND]</button></h3>
+            <div class="panel-content" style="display: none;">
+                <form id="createScholarshipForm">
+                    <!-- Form fields here -->
+                </form>
+            </div>
+        </div>
+
+        <!-- Section 3: Active Scholarships List -->
+        <div class="glass-panel">
+            <h3 class="panel-header">Active Scholarships <button class="action-button">[VIEW]</button></h3>
+            <div class="panel-content" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Slots</th>
+                            <th>Coverage</th>
+                            <th>Max Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows of active scholarships -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 4: Pending Applications Queue -->
+        <div class="glass-panel">
+            <h3 class="panel-header">Pending Applications (3) <button class="action-button">[VIEW]</button></h3>
+            <div class="panel-content" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>School</th>
+                            <th>Course</th>
+                            <th>Year</th>
+                            <th>GPA</th>
+                            <th>Applied For</th>
+                            <th>Amount Requested</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows of pending applications -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 5: Recent Disbursements Table -->
+        <div class="glass-panel">
+            <h3 class="panel-header">Recent Disbursements <button class="action-button">[VIEW]</button></h3>
+            <div class="panel-content" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Student</th>
+                            <th>School</th>
+                            <th>Amount (KSH)</th>
+                            <th>Coverage</th>
+                            <th>Fees Deducted</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows of recent disbursements -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 6: Impact Report Panel -->
+        <div class="glass-panel">
+            <h3 class="panel-header">Impact Report <button class="action-button">[EXPORT]</button></h3>
+            <div class="panel-content" style="display: none;">
+                <!-- Impact metrics and export buttons -->
+            </div>
+        </div>
+
     </div>
 
     <script src="../assets/js/main.js"></script>
